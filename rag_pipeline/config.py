@@ -14,3 +14,6 @@ LLM_MODEL = "llama-3.1-8b-instant"
 TOP_K_RETRIEVE = 50
 TOP_N_RERANK = 5
 FETCH_K = 100
+
+VECTOR_SIZE = 384
+COLLECTION_NAME = "papers"
