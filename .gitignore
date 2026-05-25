@@ -1,0 +1,9 @@
+notebook/qdrant_database_10k/
+notebook/bm25_index_10k/
+*.npy
+*.json
+!notebook/grounded_benchmark.json  # Keeps your benchmark settings if it's small/necessary
+venv/
+ENV/
+env/
+.env
