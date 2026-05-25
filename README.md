@@ -90,7 +90,7 @@ The core goal is to create a retrieval system that behaves more like an intellig
 ## 1. Scientific Paper Dataset Processing
 
 The system is designed primarily for:
-- AI/ML research papers
+- Mathematics,Space research papers
 - scientific literature
 - long-form technical documents
 
@@ -311,32 +311,11 @@ Checks whether at least one relevant chunk was retrieved.
 | Embeddings | SentenceTransformers |
 | Vector Database | Qdrant |
 | Reranking | CrossEncoder |
-| LLM Routing | Groq + Qwen |
+| LLM Routing | Groq + Llama |
 | Chunking | LangChain Text Splitters |
 | Dataset | Hugging Face arXiv |
 
 ---
-
-# Current Pipeline Status
-
-## Completed
-
-- [x] Dataset ingestion
-- [x] Cleaning pipeline
-- [x] Semantic chunking
-- [x] BM25 retrieval
-- [x] Dense retrieval
-- [x] Qdrant integration
-- [x] Hybrid retrieval
-- [x] RRF fusion
-- [x] Cross-encoder reranking
-- [x] Retrieval grading
-- [x] Retry logic
-- [x] LLM query routing
-- [x] Evaluation metrics
-
----
-
 # Planned Future Work
 
 ## Generation Pipeline
