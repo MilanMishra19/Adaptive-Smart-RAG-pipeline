@@ -1,0 +1,12 @@
+langchain
+langchain_groq
+dotenv
+datasets
+langchain_core
+langchain_community
+pypdf
+pymupdf
+sentence_transformers
+transformers
+qdrant-client
+bm25s
