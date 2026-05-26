@@ -1,6 +1,12 @@
 import os
+from groq import Groq
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 HF_TOKEN = os.getenv("HF_TOKEN")
+
+def get_groq_client() -> Groq:
+    if not GROQ_API_KEY:
+        raise ValueError("GROQ_API_KEY env var is not set")
+    return Groq(api_key=GROQ_API_KEY)
 
 BM25_INDEX_PATH = os.getenv("BM25_INDEX_PATH", "./notebook/bm25_index_10k")
 QDRANT_PATH = os.getenv("QDRANT_PATH", "./notebook/qdrant_database_10k")
