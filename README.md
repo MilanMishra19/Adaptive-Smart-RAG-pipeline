@@ -1,508 +1,127 @@
+# Adaptive Hybrid RAG Pipeline
 
-# Adaptive Hybrid RAG System
+A retrieval-augmented generation system over 443k chunks from 10,000 arXiv papers. Combines BM25, dense vector search, and a cross-encoder reranker with LLM-based query routing, query rewriting, and retrieval grading.
 
-A modular, research-oriented Adaptive Retrieval-Augmented Generation (RAG) system built from first principles using:
-- Sparse Retrieval (BM25)
-- Dense Semantic Retrieval
-- Hybrid Fusion (RRF)
-- Cross-Encoder Reranking
-- Retrieval Grading
-- Retry Logic
-- LLM-based Query Routing
+## How it works
 
-This project focuses on **adaptive retrieval orchestration** rather than building a simple chatbot wrapper.
+A query goes through four stages:
 
----
+1. **Route** — an LLM classifier picks the retrieval strategy (`bm25`, `dense`, `hybrid`, or `hybrid_rerank`) based on query type
+2. **Retrieve** — hybrid search with query expansion via RRF fusion, with up to 2 automatic retries if retrieval confidence is low. On each retry the query is rewritten using a different strategy before trying again
+3. **Rerank** — a cross-encoder scores the top candidates; skipped if pre-rerank confidence already clears the threshold
+4. **Generate** — Groq LLaMA produces a grounded answer from the retrieved chunks
 
-# Project Vision
+## Benchmark (50 queries, corpus-grounded)
 
-Traditional RAG systems use:
-- one retriever
-- one vector database
-- static retrieval logic
-
-This project instead explores:
-
-```text
-adaptive retrieval policy optimization
-```
-
-where the system dynamically:
-- selects retrieval strategies
-- grades retrieval quality
-- retries when retrieval confidence is low
-- reranks results
-- routes queries intelligently using an LLM
-
-The core goal is to create a retrieval system that behaves more like an intelligent retrieval engine rather than a fixed pipeline.
-
----
-
-# High-Level Architecture
-
-```text
-                    ┌────────────────────┐
-                    │   User Query       │
-                    └─────────┬──────────┘
-                              │
-                              ▼
-                 ┌────────────────────────┐
-                 │   LLM Query Router     │
-                 │ (Policy Selection)     │
-                 └─────────┬──────────────┘
-                           │
-          ┌────────────────┼────────────────┐
-          │                │                │
-          ▼                ▼                ▼
-     BM25 Search      Dense Search      Hybrid Search
-          │                │                │
-          └────────────────┼────────────────┘
-                           ▼
-                ┌──────────────────────┐
-                │  Hybrid Fusion (RRF) │
-                └─────────┬────────────┘
-                          ▼
-                ┌──────────────────────┐
-                │ Cross Encoder        │
-                │ Reranking            │
-                └─────────┬────────────┘
-                          ▼
-                ┌──────────────────────┐
-                │ Retrieval Grading    │
-                └─────────┬────────────┘
-                          ▼
-                Low Confidence?
-                          │
-                    Yes ──┴──► Retry Logic
-                          │
-                         No
-                          ▼
-                ┌──────────────────────┐
-                │ Final Retrieved      │
-                │ Context              │
-                └──────────────────────┘
-```
-
----
-
-# Core Features
-
-## 1. Scientific Paper Dataset Processing
-
-The system is designed primarily for:
-- Mathematics,Space research papers
-- scientific literature
-- long-form technical documents
-
-Current dataset source:
-- Hugging Face arXiv dataset
-
----
-
-## 2. Advanced Chunking Pipeline
-
-Documents undergo:
-- text cleaning
-- section-aware splitting
-- recursive semantic chunking
-
-### Chunking Strategy
-- Section-aware regex splitting
-- RecursiveCharacterTextSplitter
-- Metadata enrichment
-- Chunk hashing
-
-### Metadata Stored
-
-Each chunk contains:
-- chunk_id
-- paper_id
-- section_title
-- chunk_index
-- token_estimate
-- abstract preview
-
----
-
-# Retrieval System
-
-## Sparse Retrieval (BM25)
-
-Implements:
-- lexical retrieval
-- exact terminology matching
-- acronym-sensitive retrieval
-
-Best for:
-- exact paper titles
-- terminology-heavy queries
-- benchmark names
-- abbreviations
-
----
-
-## Dense Retrieval
-
-Uses transformer embeddings for semantic similarity search.
-
-### Embedding Models Explored
-- BGE-small
-- SPECTER
-- MiniLM
-
-Dense retrieval is best for:
-- semantic reasoning
-- conceptual similarity
-- paraphrased queries
-
----
-
-## Vector Database
-
-Vector storage is handled using Qdrant.
-
-Used for:
-- scalable vector search
-- persistent embedding storage
-- similarity retrieval
-
----
-
-# Hybrid Retrieval
-
-The system combines:
-- sparse retrieval
-- dense retrieval
-
-using:
-
-## Reciprocal Rank Fusion (RRF)
-
-```math
-RRF(d)=\sum_{r\in R}\frac{1}{k+r(d)}
-```
-
-### Why RRF?
-
-RRF:
-- is robust
-- handles score distribution mismatch
-- works well across heterogeneous retrievers
-- is widely used in production retrieval systems
-
----
-
-# Cross-Encoder Reranking
-
-After retrieval, candidate chunks are reranked using a cross encoder.
-
-### Reranker Model
-
-```text
-cross-encoder/ms-marco-MiniLM-L-6-v2
-```
-
-### Why Reranking?
-
-Retrieval retrieves:
-- approximate candidates
-
-Reranking improves:
-- precision
-- ranking quality
-- semantic relevance
-
-This creates a:
-
-```text
-multi-stage retrieval pipeline
-```
-
----
-
-# Adaptive Retrieval Logic
-
-## Retrieval Grading
-
-Retrieved contexts are scored using:
-- retrieval confidence
-- hybrid score quality
-- ranking consistency
-
-Low-confidence retrievals trigger retries.
-
----
-
-## Retry Logic
-
-The system supports adaptive retries:
-- alternate retrieval strategies
-- retrieval fallback mechanisms
-- reranking retries
-
-Example:
-
-```text
-Hybrid Retrieval Failed
-        ↓
-Retry using Dense-Heavy Retrieval
-```
-
----
-
-# LLM Query Routing
-
-The retrieval strategy is dynamically selected using an LLM router.
-
-### Router Model
-
-```text
-Qwen2.5-3B-Instruct
-```
-
-The router chooses:
-- retrieval strategy
-- top_k
-- reranking policy
-
-Example router output:
-
-```json
-{
-  "strategy": "hybrid",
-  "top_k": 10,
-  "rerank": true
-}
-```
-
----
-
-# Evaluation System
-
-The project evaluates retrieval quality using classical Information Retrieval metrics.
-
-## Metrics Implemented
-
-### Recall@K
-
-Measures whether relevant chunks appear in the top K retrieved results.
-
-### Mean Reciprocal Rank (MRR)
-
-```math
-MRR=\frac{1}{|Q|}\sum_{i=1}^{|Q|}\frac{1}{rank_i}
-```
-
-Measures ranking quality.
-
-### Hit Rate
-
-Checks whether at least one relevant chunk was retrieved.
-
----
-
-# Technology Stack
-
-| Component | Technology |
+| Metric | Score |
 |---|---|
-| Language | Python |
-| Notebook Environment | Jupyter |
-| Sparse Retrieval | rank-bm25 |
-| Embeddings | SentenceTransformers |
-| Vector Database | Qdrant |
-| Reranking | CrossEncoder |
-| LLM Routing | Groq + Llama |
-| Chunking | LangChain Text Splitters |
-| Dataset | Hugging Face arXiv |
+| Recall@50 pre-rerank | 0.880 |
+| Recall@5 post-rerank (exact) | 0.820 |
+| Recall@5 post-rerank (paper) | 0.900 |
+| MRR exact | 0.663 |
+| MRR paper | 0.830 |
+| Reranker lift @5 | +0.040 |
+| Generation eval (10 queries) | 10/10 relevant |
 
----
-# Planned Future Work
+## Stack
 
-## Generation Pipeline
+| Component | Library |
+|---|---|
+| Sparse retrieval | `bm25s` |
+| Dense retrieval | `all-MiniLM-L6-v2` + Qdrant |
+| Fusion | Reciprocal Rank Fusion |
+| Reranker | `cross-encoder/ms-marco-MiniLM-L-12-v2` |
+| LLM (routing / generation / grading) | Groq `llama-3.1-8b-instant` |
 
-Add:
-- final answer synthesis
-- context-aware generation
-- grounded response generation
+## Setup
 
----
-
-## Advanced Evaluation
-
-Future additions:
-- RAGAS
-- Context Precision
-- Faithfulness
-- Answer Relevancy
-
----
-
-## Graph Retrieval
-
-Potential future integration:
-- citation graphs
-- author relationships
-- multi-hop retrieval
-
----
-
-## Structured Retrieval
-
-Potential additions:
-- PostgreSQL
-- metadata retrieval
-- benchmark querying
-
----
-
-## Retrieval Failure Analysis
-
-Analyze:
-- lexical misses
-- semantic misses
-- reranker failures
-- routing failures
-
----
-
-# Design Philosophy
-
-This project intentionally avoids:
-- premature agent systems
-- orchestration complexity
-- framework overdependence
-
-Instead, it focuses on:
-- retrieval quality
-- adaptive retrieval policies
-- modular experimentation
-- systems-level retrieval engineering
-
----
-
-# Key Insight
-
-This is NOT:
-
-```text
-"just another RAG chatbot"
-```
-
-The system is designed as:
-
-```text
-an adaptive retrieval orchestration framework
-```
-
-where retrieval itself becomes:
-- dynamic
-- policy-driven
-- self-correcting
-- evaluation-aware
-
----
-
-# Example Query Flow
-
-```text
-User Query:
-"methods that repair retrieval failures"
-
-        ↓
-
-LLM Router
-→ chooses Dense Retrieval + Reranking
-
-        ↓
-
-Dense Retrieval
-→ retrieves semantic candidates
-
-        ↓
-
-Reranker
-→ improves ranking precision
-
-        ↓
-
-Retrieval Grader
-→ evaluates retrieval confidence
-
-        ↓
-
-Retry Logic (if needed)
-
-        ↓
-
-Final Context Returned
-```
-
----
-
-# Repository Structure (Planned)
-
-```text
-adaptive-rag/
-│___data/
-|    └── data.py
-|
-├── retrieval/
-│   ├── bm25.py
-│   ├── dense.py
-│   ├── hybrid.py
-│   └── reranker.py
-│
-├── routing/
-│   ├── llm_router.py
-│   └── retry_logic.py
-│
-├── evaluation/
-│   ├── metrics.py
-│   └── benchmark.py
-│
-├── storage/
-│   └── qdrant_store.py
-│
-├── notebooks/
-│   └── experimentation.ipynb
-│
-└── README.md
-```
-# Setup
-
-## Start Qdrant Server
+**Prerequisites:** Python 3.11+, Docker (for Qdrant)
 
 ```bash
-docker run -d --name qdrant -p 6333:6333 qdrant/qdrant
+git clone https://github.com/MilanMishra19/adaptive-rag
+cd adaptive-rag
+pip install -r requirements.txt
 ```
-
-## Verify Qdrant is Running
 
 ```bash
-docker ps
+# Start Qdrant
+docker run -p 6333:6333 qdrant/qdrant
 ```
-
----
-
-# Run the RAG Pipeline
-
-From the project root:
 
 ```bash
-python -m rag_pipeline.app
+# Set env vars
+export GROQ_API_KEY=your_key_here
 ```
 
----
+```bash
+# Build all indexes (downloads dataset, encodes chunks, builds BM25 + Qdrant)
+python setup.py
+```
 
-# Test the Modular Pipeline
+This takes a while on first run — it encodes 443k chunks. Subsequent runs skip already-built indexes automatically. If you have a laptop lacking a GPU, I suggest using Google Colab with runtime set to T4 GPU. Download the embeddings in the form of .npy as well as .json
+
+**Custom dataset size:**
+```bash
+python setup.py --papers 5000
+```
+
+**Bring your own chunks:**
+```bash
+python setup.py --chunks-file ./my_chunks.json
+```
+
+**Rebuild a single index:**
+```bash
+python setup.py --only bm25
+python setup.py --only qdrant
+python setup.py --only embeddings
+```
+
+## Usage
 
 ```python
 from rag_pipeline.app import Pipeline
 
-pipe = Pipeline()
+pipe = Pipeline()  # loads all indexes once
+result = pipe.query("any query you would like..")
 
-result = pipe.query("your query here")
-
-print(result)
+print(result["answer"])
+print(result["strategy"])   # which retrieval strategy was used
+print(result["confidence"]) # float in [0, 1]
+print(result["sources"])    # retrieved chunks with scores
 ```
 
+## Project structure
+
+```
+rag_pipeline/
+├── data/
+│   └── load_data.py        # dataset download, cleaning, chunking
+├── retrieval/
+│   ├── bm25.py             # BM25 index build + search
+│   ├── semantic.py         # Qdrant index build + dense search
+│   └── hybrid.py           # RRF fusion, query expansion
+├── reranking/
+│   └── rerank.py           # cross-encoder rerank, confidence scoring, retry loop
+├── routing/
+│   └── router.py           # LLM-based routing 
+├── generation/
+│   └── generate.py         # to generate queries grounded to the corpus
+├── eval_ragas/
+│   ├── metrics.py          # recall, MRR, grading
+│   └── benchmark.py        # benchmark builder
+├── config.py               # all paths and model names, env-configurable, make necessary changes here only
+└── app.py                  # Pipeline class — combines the module
+setup.py                    # first-time index builder for adding your own dataset etc.
+```
+
+## Environment variables
+
+| Variable | Default | Description |
+|---|---|---|
+| `GROQ_API_KEY` | — | Required |
+| `HF_TOKEN` | — | Only needed for gated HuggingFace datasets |
+| `BM25_INDEX_PATH` | `./bm25_index_10k` | Where to save/load the BM25 index |
+| `QDRANT_PATH` | `localhost:6333` | Qdrant connection |
+| `CHUNKS_PATH` | `./all_chunks_slim.json` | Chunks JSON |
+| `EMBEDDINGS_PATH` | `./chunk_embeddings.npy` | Embeddings array |
