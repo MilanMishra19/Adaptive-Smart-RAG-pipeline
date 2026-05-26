@@ -66,12 +66,17 @@ def retrieve_and_grade(
     top_k: int = TOP_N_RERANK,
     fetch_k: int = TOP_K_RETRIEVE,
     confidence_threshold: float = CONFIDENCE_THRESHOLD,
+    groq_client=None,
 ) -> dict:
     """Single-shot retrieve + conditional rerank + grade.
  
     Skips the cross-encoder when pre-rerank confidence already meets the
     threshold (saves latency on easy queries).
     """
+    if groq_client is None:
+        from rag_pipeline.config import get_groq_client
+        groq_client = get_groq_client()
+ 
     raw = hybrid_search_expanded(query, top_k=fetch_k)
     pre_confidence, _ = confidence_score(raw[:top_k])
  
@@ -82,7 +87,7 @@ def retrieve_and_grade(
         results = rerank(query, raw, top_n=top_k)
         confidence, _ = confidence_score(results)
  
-    grade, reason = grading(query, results, confidence)
+    grade, reason = grading(query, results, confidence, groq_client=groq_client)
     failed = grade == "irrelevant" or confidence < confidence_threshold
  
     return {
@@ -132,11 +137,34 @@ def rewrite_query(
     )
     return response.choices[0].message.content.strip()
  
-_RETRY_STRATEGIES = [
-    ("hybrid",   lambda q: hybrid_search(q, top_k=TOP_K_RETRIEVE)),
-    ("bm25",     lambda q: bm25_search(q, top_k=TOP_K_RETRIEVE)),
-    ("semantic", lambda q: semantic_search(q, top_k=TOP_K_RETRIEVE)),
-]
+def _build_retry_strategies() -> list:
+    """Build strategy callables at call time, after Pipeline._inject_singletons()
+    has populated the module-level vars in each retrieval module."""
+    import rag_pipeline.retrieval.bm25     as _bm25
+    import rag_pipeline.retrieval.semantic as _sem
+    return [
+        ("hybrid",   lambda q: hybrid_search(
+                        q,
+                        retriever=_bm25._retriever,
+                        client=_sem._qdrant,
+                        bi_encoder=_sem._bi_encoder,
+                        all_chunks=_bm25._all_chunks,
+                        top_k=TOP_K_RETRIEVE,
+                    )),
+        ("bm25",     lambda q: bm25_search(
+                        q,
+                        retriever=_bm25._retriever,
+                        all_chunks=_bm25._all_chunks,
+                        top_k=TOP_K_RETRIEVE,
+                    )),
+        ("semantic", lambda q: semantic_search(
+                        q,
+                        client=_sem._qdrant,
+                        bi_encoder=_sem._bi_encoder,
+                        all_chunks=_sem._all_chunks,
+                        top_k=TOP_K_RETRIEVE,
+                    )),
+    ]
  
 def retrieve_with_retry(
     query: str,
@@ -153,8 +181,9 @@ def retrieve_with_retry(
     attempt_log = []
     current_query = query
  
+    retry_strategies = _build_retry_strategies()
     for attempt in range(max_retries + 1):
-        strategy_name, search_fn = _RETRY_STRATEGIES[min(attempt, len(_RETRY_STRATEGIES) - 1)]
+        strategy_name, search_fn = retry_strategies[min(attempt, len(retry_strategies) - 1)]
  
         raw_results = search_fn(current_query)
         pre_confidence, _ = confidence_score(raw_results[:TOP_N_RERANK])
@@ -166,7 +195,7 @@ def retrieve_with_retry(
             results = rerank(current_query, raw_results, top_n=TOP_N_RERANK)
             confidence, _ = confidence_score(results)
  
-        grade, reason = grading(current_query, results, confidence)
+        grade, reason = grading(current_query, results, confidence, groq_client=groq_client)
         failed = grade == "irrelevant" or confidence < confidence_threshold
  
         attempt_log.append({
