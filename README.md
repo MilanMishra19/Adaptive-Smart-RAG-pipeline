@@ -443,7 +443,9 @@ Final Context Returned
 
 ```text
 adaptive-rag/
-│
+│___data/
+|    └── data.py
+|
 ├── retrieval/
 │   ├── bm25.py
 │   ├── dense.py
@@ -467,24 +469,3 @@ adaptive-rag/
 └── README.md
 ```
 
----
-
-# Final Goal
-
-The long-term objective is to build a:
-
-```text
-research-grade adaptive retrieval system
-```
-
-capable of:
-- intelligent retrieval policy selection
-- retrieval self-correction
-- scalable retrieval orchestration
-- high-quality grounded generation
-
-while remaining:
-- modular
-- interpretable
-- experimentally rigorous
-- not overengineered.
