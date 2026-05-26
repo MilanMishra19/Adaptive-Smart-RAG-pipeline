@@ -468,4 +468,18 @@ adaptive-rag/
 │
 └── README.md
 ```
+---
+#Setup
+python -m rag_pipeline.py
+#Initializing local server for Qdrant
+docker run -d --name qdrant -p 6333:6333 qdrant/qdrant
+#Verify it is running
+docker ps
+#Test modular structure
+python
+>>>from rag_pipeline.app import Pipeline
+>>>pipe = Pipeline()
+>>>result = pipe.query("your query here")
+>>>print(result)
+```
 
