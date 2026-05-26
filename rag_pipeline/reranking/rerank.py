@@ -161,7 +161,7 @@ def _build_retry_strategies() -> list:
                         q,
                         client=_sem._qdrant,
                         bi_encoder=_sem._bi_encoder,
-                        all_chunks=_sem._all_chunks,
+                        #all_chunks=_sem._all_chunks,
                         top_k=TOP_K_RETRIEVE,
                     )),
     ]

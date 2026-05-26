@@ -10,3 +10,8 @@ sentence_transformers
 transformers
 qdrant-client
 bm25s
+
+#for backend
+pydantic
+fastapi
+uvicorn
