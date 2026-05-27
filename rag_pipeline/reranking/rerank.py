@@ -1,7 +1,8 @@
 #/rag_pipeline/reranking/rerank.py
 import numpy as np
 from sentence_transformers import CrossEncoder
- 
+import rag_pipeline.retrieval.bm25 as _bm25
+import rag_pipeline.retrieval.semantic as _sem
 from rag_pipeline.config import (
     CROSS_ENCODER_MODEL,
     TOP_N_RERANK,
@@ -76,7 +77,7 @@ def retrieve_and_grade(
         from rag_pipeline.config import get_groq_client
         groq_client = get_groq_client()
  
-    raw = hybrid_search_expanded(query, top_k=fetch_k)
+    raw = hybrid_search_expanded(query,retriever=_bm25._retriever,client=_sem._qdrant,bi_encoder=_sem._bi_encoder,all_chunks=_bm25._all_chunks, top_k=fetch_k)
     pre_confidence, _ = confidence_score(raw[:top_k])
  
     if pre_confidence >= confidence_threshold:

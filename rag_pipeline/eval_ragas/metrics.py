@@ -105,7 +105,7 @@ def run_grounded_eval(
     Returns:
         metrics dict (keys → list of per-query scores).
     """
-    metrics = defaultdict(list)
+    metrics: defaultdict[str, list[float]] = defaultdict(list) #fixed type issues
     failed  = []
  
     for item in benchmark:

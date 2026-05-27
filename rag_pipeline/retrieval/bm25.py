@@ -3,6 +3,9 @@
 import bm25s
 from rag_pipeline.config import BM25_INDEX_PATH, TOP_K_RETRIEVE
 
+from typing import Optional
+_retriever = None
+_all_chunks: list[dict] =[]
 def create_bm25(all_chunks: list[dict]) -> None:
     corpus_texts = [c["text"] for c in all_chunks]
     retriever = bm25s.BM25()

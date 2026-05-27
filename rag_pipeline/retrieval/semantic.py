@@ -6,6 +6,9 @@ from qdrant_client.models import VectorParams, Distance, PointStruct
 from sentence_transformers import SentenceTransformer
 from rag_pipeline.config import BI_ENCODER_MODEL,TOP_K_RETRIEVE,COLLECTION_NAME,VECTOR_SIZE    
 
+_bi_encoder = None
+_qdrant = None
+_all_chunks:list[dict]=[]
 def load_qdrant() -> QdrantClient:
     client = QdrantClient(host="localhost",port=6333)
     print("[INFO] Qdrant loaded")
