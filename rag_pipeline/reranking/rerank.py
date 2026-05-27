@@ -77,7 +77,7 @@ def retrieve_and_grade(
         from rag_pipeline.config import get_groq_client
         groq_client = get_groq_client()
  
-    raw = hybrid_search_expanded(query,retriever=_bm25._retriever,client=_sem._qdrant,bi_encoder=_sem._bi_encoder,all_chunks=_bm25._all_chunks, top_k=fetch_k)
+    raw = hybrid_search_expanded(query,retriever=_bm25._retriever,client=_sem._qdrant,bi_encoder=_sem._bi_encoder,all_chunks=_bm25._all_chunks,groq_client=groq_client, top_k=fetch_k)
     pre_confidence, _ = confidence_score(raw[:top_k])
  
     if pre_confidence >= confidence_threshold:
