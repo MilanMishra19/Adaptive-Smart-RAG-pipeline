@@ -15,7 +15,7 @@ def clean_text(text):
 
 
 def load_arxiv_subset(n: int = 10000):
-    dataset = load_dataset("ccdv/arxiv-summarization")
+    dataset = load_dataset("ccdv/arxiv-summarization",revision="main")
     return dataset["train"].select(range(n))
 
 
@@ -39,7 +39,7 @@ def process_dataset(data) -> list[dict]:
                 if len(chunk) < 50:
                     continue
                 all_chunks.append({
-                    "chunk_id":      hashlib.md5(f"{i}_abstract_{chunk_idx}".encode()).hexdigest(),
+                    "chunk_id":      hashlib.md5(f"{i}_abstract_{chunk_idx}".encode(),usedforsecurity=False).hexdigest(),
                     "paper_id":      i,
                     "section_title": "ABSTRACT",
                     "chunk_index":   chunk_idx,
@@ -54,7 +54,7 @@ def process_dataset(data) -> list[dict]:
                 if len(chunk) < 50:
                     continue
                 all_chunks.append({
-                    "chunk_id":      hashlib.md5(f"{i}_article_{chunk_idx}".encode()).hexdigest(),
+                    "chunk_id":      hashlib.md5(f"{i}_article_{chunk_idx}".encode(),usedforsecurity=False).hexdigest(),
                     "paper_id":      i,
                     "section_title": "ARTICLE",
                     "chunk_index":   chunk_idx,
