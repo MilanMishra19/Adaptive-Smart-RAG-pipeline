@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from typing import Any
-#Validation for the user request
+#Validation for the user request to the RAG model
 class QueryRequest(BaseModel):
     query: str
 
