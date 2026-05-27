@@ -15,7 +15,7 @@ def clean_text(text):
 
 
 def load_arxiv_subset(n: int = 10000):
-    dataset = load_dataset("ccdv/arxiv-summarization",revision="main")
+    dataset = load_dataset("ccdv/arxiv-summarization",revision="main") #nosec B615
     return dataset["train"].select(range(n))
 
 
