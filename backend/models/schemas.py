@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-
+from typing import Any
 #Validation for the user request
 class QueryRequest(BaseModel):
     query: str
@@ -17,5 +17,5 @@ class QueryResponse(BaseModel):
     grade :  str
     retrieval_failed : bool
     attempts : list
-    sources : dict
+    sources : list[dict[str, Any]]
 
