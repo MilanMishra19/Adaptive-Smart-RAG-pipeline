@@ -30,11 +30,15 @@ const App = () => {
       
       // Simulated delay for UI feel
       setMessages(prev => [...prev, {
-            role: 'ai',
-            content: data.answer,
-            sources: data.sources?.map(s => `Paper ${s.paper_id} — ${s.section_title}`) ?? []
-    }]);
-    setIsThinking(false);
+        role: 'ai',
+        content: data.answer,
+        sources: data.sources?.map(s => `Paper ${s.paper_id} — ${s.section_title}`) ?? [],
+        strategy: data.strategy,
+        confidence: data.confidence,
+        grade: data.grade,
+        retrieval_failed: data.retrieval_failed,
+        }]);
+      setIsThinking(false);
 
     } catch (error) {
       console.error("Uplink Error:", error);
@@ -57,18 +61,38 @@ const App = () => {
           </div>
         )}
         
-        {messages.map((msg, i) => (
-          <div key={i} className={`message ${msg.role === 'user' ? 'user-message' : 'ai-message'}`}>
-            <p>{msg.content}</p>
-            {msg.sources && (
-              <div className="sources">
-                {msg.sources.map((s, idx) => <span key={idx} className="source-pill">{s}</span>)}
-              </div>
-            )}
-          </div>
-        ))}
+           {messages.map((msg, i) => (
+    <div key={i} className={`message ${msg.role === 'user' ? 'user-message' : 'ai-message'}`}>
+        <p>{msg.content}</p>
+        {msg.role === 'ai' && msg.strategy && (
+            <div className="meta-bar">
+                <span className={`strategy-badge strategy-${msg.strategy}`}>
+                    {msg.strategy}
+                </span>
+                <div className="confidence-bar ">
+                    <div className=""
+                        style={{ width: `${msg.confidence * 100}%`,background: msg.confidence > 0.7 ? '#22c55e' : msg.confidence > 0.4 ? '#eab308' : '#ef4444'}}
+                    />
+                </div>
+                <span className={`grade-dot grade-${msg.grade}`} />
+            </div>
+        )}
+        {msg.sources && (
+            <div className="sources">
+                {msg.sources.map((s, idx) => (
+                    <span key={idx} className="source-pill">{s}</span>
+                ))}
+            </div>
+        )}
+    </div>
+))}
+        
         {isThinking && (
-          <div className="ai-message" style={{ opacity: 0.5 }}>AI is processing knowledge...</div>
+          <div className="ai-message skeleton-card">
+            <div className="skeleton-line wide"></div>
+            <div className="skeleton-line medium"></div>
+            <div className="skeleton-line narrow"></div>
+          </div>
         )}
       </div>
 
