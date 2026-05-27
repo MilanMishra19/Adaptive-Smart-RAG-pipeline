@@ -15,3 +15,9 @@ bm25s
 pydantic
 fastapi
 uvicorn
+
+#for ci/cd
+ruff
+mypy
+bandit
+pytest

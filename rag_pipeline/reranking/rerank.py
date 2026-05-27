@@ -1,5 +1,4 @@
 #/rag_pipeline/reranking/rerank.py
-import re
 import numpy as np
 from sentence_transformers import CrossEncoder
  

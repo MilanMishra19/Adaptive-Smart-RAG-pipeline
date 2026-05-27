@@ -1,4 +1,3 @@
-import json
 import random
 
 from groq import Groq
@@ -88,7 +87,6 @@ def build_grounded_benchmark(
 
 
 if __name__ == "__main__":
-    import os
     import json as _json
     from groq import Groq as _Groq
     from rag_pipeline.config import CHUNKS_PATH, GROQ_API_KEY

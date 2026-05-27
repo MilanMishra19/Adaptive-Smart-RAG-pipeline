@@ -8,7 +8,7 @@ from rag_pipeline.config import BI_ENCODER_MODEL,TOP_K_RETRIEVE,COLLECTION_NAME,
 
 def load_qdrant() -> QdrantClient:
     client = QdrantClient(host="localhost",port=6333)
-    print(f"[INFO] Qdrant loaded")
+    print("[INFO] Qdrant loaded")
     return client
 
 

@@ -1,5 +1,5 @@
 from groq import Groq
-from rag_pipeline.config import GROQ_API_KEY, LLM_MODEL
+from rag_pipeline.config import  LLM_MODEL
 def generate_answer(query: str, results: list, groq_client: Groq, top_k: int = 3) -> str:
     """
     Generate a grounded answer from top reranked chunks.

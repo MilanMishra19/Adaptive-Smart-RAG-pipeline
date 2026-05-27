@@ -75,8 +75,8 @@ def expand_query(
     )
     lines = response.choices[0].message.content.strip().split("\n")
     variants = [
-        l.strip() for l in lines
-        if l.strip() and l.strip().lower() != query.lower()
+        line.strip() for line in lines
+        if line.strip() and line.strip().lower() != query.lower()
     ]
     return [query] + variants[:n]
 
