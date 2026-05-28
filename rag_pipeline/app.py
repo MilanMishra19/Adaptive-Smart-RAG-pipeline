@@ -39,12 +39,14 @@ class Pipeline:
     def _ensure_artifacts(self):
         from huggingface_hub import snapshot_download
         import os
+        local_dir = os.path.dirname(CHUNKS_PATH)
         needs_download = any([
             not os.path.exists(CHUNKS_PATH),
             not os.path.exists(BM25_INDEX_PATH),
             not os.path.exists(EMBEDDINGS_PATH),
         ])
         if needs_download:
+            print(f"[INFO] Downloading artifacts to {local_dir}...")
             print("[INFO] Artifacts missing, downloading from hf data repository")
             snapshot_download(
                 repo_id = HF_REPO_ID,
