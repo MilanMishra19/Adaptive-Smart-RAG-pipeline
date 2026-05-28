@@ -27,14 +27,37 @@ from rag_pipeline.config import (
     CROSS_ENCODER_MODEL,
     TOP_N_RERANK,
     CONFIDENCE_THRESHOLD,
+    HF_REPO_ID,
+    HF_TOKEN
 )
 
 
 class Pipeline:
     """Loads every index and model once at construction; exposes .query()."""
-
+    def ensure_artifacts(self):
+        from huggingface_hub import snapshot_download
+        import os
+        needs_download = any([
+            not os.path.exists(CHUNKS_PATH),
+            not os.path.exists(BM25_INDEX_PATH),
+            not os.path.exists(EMBEDDINGS_PATH),
+        ])
+        if needs_download:
+            print("[INFO] Artifacts missing, downloading from hf data repository")
+            snapshot_download(
+                repo_id = HF_REPO_ID,
+                repo_type="dataset",
+                local_dir="./data",
+                token = HF_TOKEN,
+            )
+            print("[INFO] Download complete")
+        else:
+            print("[INFO] Artifacts alr present")
     def __init__(self) -> None:
         # LLM client
+        print("[INFO] Pipeline init started")
+        self._ensure_artifacts()
+        print("[INFO] Artifacts ready")
         self.groq_client = Groq(api_key=GROQ_API_KEY)
 
         # Retrieval models
