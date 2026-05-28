@@ -8,6 +8,7 @@ from sentence_transformers import SentenceTransformer
 #Args
 def parse_args():
     p = argparse.ArgumentParser(description="Build all RAG pipeline indexes.")
+    p.add_argument("--upload",action="store_true",help="Upload indexes to hugging face repository")
     p.add_argument("--papers",       type=int,  default=10_000,
                    help="Number of arXiv papers to load (default: 10000)")
     p.add_argument("--skip-data",    action="store_true",
@@ -24,7 +25,37 @@ def parse_args():
 #Helper functions
 def step(msg: str):
     print(f"\n{'='*60}\n  {msg}\n{'='*60}")
-
+def upload_to_hub(config):
+    from huggingface_hub import HfApi
+    api = HfApi()
+    api.create_repo(
+        repo_id = config.HF_REPO_ID,
+        repo_type="dataset",
+        exist_ok=True,
+        private=False
+    )
+    print("[INFO] uploading bm25 indexes")
+    api.upload_folder(
+        folder_path=config.BM25_INDEX_PATH,
+        repo_id = config.HF_REPO_ID,
+        repo_type="dataset",
+        path_in_repo="bm25_index_10k"
+    )
+    print("[INFO] Uploading chunks(JSON)")
+    api.upload_file(
+        path_or_fileobj=config.CHUNKS_PATH,
+        path_in_repo="all_chunks_slim.json",
+        repo_id=config.HF_REPO_ID,
+        repo_type="dataset"
+    )
+    print("[INFO] uploading the embeddings")
+    api.upload_file(
+        path_or_fileobj=config.EMBEDDINGS_PATH,
+        path_in_repo="chunk_embeddings_10k (1).npy",
+        repo_id=config.HF_REPO_ID,
+        repo_type="dataset"
+    )
+    print(f"[INFO] Done all files uploaded to {config.HF_REPO_ID}")
 def check_env():
     missing = [k for k in ("GROQ_API_KEY",) if not os.getenv(k)]
     if missing:
@@ -116,6 +147,9 @@ def main():
     check_env()
     sys.path.insert(0, os.path.dirname(__file__))
     import rag_pipeline.config as config
+    if args.upload:
+        upload_to_hub(config)
+        return
     if args.only:
         import numpy as np
         with open(config.CHUNKS_PATH) as f:

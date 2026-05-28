@@ -1,9 +1,13 @@
 notebook/qdrant_database_10k/
 notebook/bm25_index_10k/
 *.npy
-*.json
-!notebook/grounded_benchmark.json  # Keeps your benchmark settings if it's small/necessary
+all_chunks_slim.json
+grounded_benchmark.json
+!notebook/grounded_benchmark.json 
 venv/
 ENV/
 env/
 .env
+__pycache__/
+*.pyc
+chunk_embeddings*.npy

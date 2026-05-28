@@ -2,6 +2,7 @@ import os
 from groq import Groq
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 HF_TOKEN = os.getenv("HF_TOKEN")
+HF_REPO_ID = os.getenv("HF_REPO_ID","mils2004/rag")
 
 def get_groq_client() -> Groq:
     if not GROQ_API_KEY:

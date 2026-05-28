@@ -1,0 +1,402 @@
+[
+  {
+    "id": 0,
+    "query": "Quantum parameter influence in plasma dynamics",
+    "ground_truth_chunk_id": "f941054f414eae305c444bd2cb51c2eb",
+    "ground_truth_paper_id": 87,
+    "source_section": "ARTICLE",
+    "source_text_preview": "the quantum parameter [MATH] has no significant role for the regime considered here , as can be seen that [MATH] mainly dominates in the term [MATH] [ eq . ( [ 19 ] ) ] , because of large group veloci"
+  },
+  {
+    "id": 1,
+    "query": "local density and energy calculation in molecular dynamics simulations",
+    "ground_truth_chunk_id": "543f749a44ee59fdfb13a55765951248",
+    "ground_truth_paper_id": 2859,
+    "source_section": "ABSTRACT",
+    "source_text_preview": "we analyse the connections between structure and dynamics in two model glass - formers , using the mutual information between an initial configuration and the ensuing dynamics to compare the predictiv"
+  },
+  {
+    "id": 2,
+    "query": "graphical model Bayesian learning two-step process",
+    "ground_truth_chunk_id": "60f4220f9f54adc180b22ca9c9819a29",
+    "ground_truth_paper_id": 486,
+    "source_section": "ABSTRACT",
+    "source_text_preview": "graphical model learning and inference are often performed using bayesian techniques . in particular , learning is usually performed in two separate steps . \n first , the graph structure is learned fr"
+  },
+  {
+    "id": 3,
+    "query": "MACHOs in Andromeda galaxy detection survey",
+    "ground_truth_chunk_id": "2f5506e9fa4ac5dd994175bef24f1316",
+    "ground_truth_paper_id": 7994,
+    "source_section": "ABSTRACT",
+    "source_text_preview": "the point - agape collaboration is currently searching for massive compact halo objects ( machos ) towards the andromeda galaxy ( m31 ) . the survey aims to exploit the high inclination of the m31 dis"
+  },
+  {
+    "id": 4,
+    "query": "ultracompact x-ray binary pulsar optical pulsations",
+    "ground_truth_chunk_id": "a4b19e23c2a2ea4b380fd2a8a17b0ff7",
+    "ground_truth_paper_id": 8887,
+    "source_section": "ABSTRACT",
+    "source_text_preview": "rapid _ ubvri _ photometry of the ultracompact low - mass x - ray binary ( lmxb ) pulsar 4u 162667/kz tra has detected 130.4 mhz ( 7.67 s ) optical pulsations in all five bands . \n the optical pulsati"
+  },
+  {
+    "id": 5,
+    "query": "method of crosses and wrenches for finding bordering faces in polyhedra",
+    "ground_truth_chunk_id": "b131cb232e0621da0ced9f170e16a49c",
+    "ground_truth_paper_id": 7714,
+    "source_section": "ARTICLE",
+    "source_text_preview": "in addition , if [MATH] then [MATH] borders [MATH] iff [MATH] . \n no other pairs of faces border and faces which border border only along a single edge . \n we refer to this method of finding [MATH] as"
+  },
+  {
+    "id": 6,
+    "query": "entanglement degradation in non-inertial frames due to decoherence and correlated noise",
+    "ground_truth_chunk_id": "353a1ab1c972ac771cdd6c1df4223381",
+    "ground_truth_paper_id": 1613,
+    "source_section": "ABSTRACT",
+    "source_text_preview": "effect of decoherence and correlated noise on the entanglement of [MATH]-type state of the dirac fields in the non - inertial frame is investigated . \n a two qubit [MATH]-state is considered to be sha"
+  },
+  {
+    "id": 7,
+    "query": "quantum coherent scattering atomic ensemble angular momentum measurement",
+    "ground_truth_chunk_id": "c1cfd32d1b3160b31ddd060191e3846b",
+    "ground_truth_paper_id": 9380,
+    "source_section": "ABSTRACT",
+    "source_text_preview": "quantum theoretical treatment of coherent forward scattering of light in a polarized atomic ensemble with an arbitrary angular momentum is developed . \n we consider coherent forward scattering of a we"
+  },
+  {
+    "id": 8,
+    "query": "columnar pins high temperature superconductors melting transition simulations",
+    "ground_truth_chunk_id": "5b7d38a8202c7ad49ec4f3d9791108d2",
+    "ground_truth_paper_id": 1370,
+    "source_section": "ABSTRACT",
+    "source_text_preview": "the effect of columnar pins on the flux - lines melting transition in high - temperature superconductors is studied using path integral monte carlo simulations . \n we highlight the similarities and di"
+  },
+  {
+    "id": 9,
+    "query": "Soft X-ray transient long-term optical observation",
+    "ground_truth_chunk_id": "4c47a389f6e31303eaa99840b00928d2",
+    "ground_truth_paper_id": 3884,
+    "source_section": "ABSTRACT",
+    "source_text_preview": "in this paper we report the long - term optical observation of the faint soft x - ray transient sax j1810.8 - 2609 from ogle and moa . \n we have focused on the 2007 outburst , and also did the cross -"
+  },
+  {
+    "id": 10,
+    "query": "Sturm distance metric spaces mathematical definition",
+    "ground_truth_chunk_id": "488f15afbd2f939dc2c2300b8646b2d6",
+    "ground_truth_paper_id": 5923,
+    "source_section": "ARTICLE",
+    "source_text_preview": "one collection of distances for measured metric spaces inspired by the gh metric is given by : the _ sturm [MATH]-distance _ \n between measured metric spaces [MATH] and [MATH] is defined to be [MATH]^"
+  },
+  {
+    "id": 11,
+    "query": "String topology applications to lagrangian embeddings in symplectic manifolds.",
+    "ground_truth_chunk_id": "f3bc9fe4005926ddadc70ea331853b23",
+    "ground_truth_paper_id": 1277,
+    "source_section": "ABSTRACT",
+    "source_text_preview": "in this chapter i discuss some applications of string topology to the study of lagrangian embeddings into symplectic manifolds , as discovered by fukaya . in this chapter i discuss some applications o"
+  },
+  {
+    "id": 12,
+    "query": "galaxy virial factor inclinations effect on black hole mass",
+    "ground_truth_chunk_id": "a65441da1114507eae8baee31e99eb7b",
+    "ground_truth_paper_id": 2063,
+    "source_section": "ARTICLE",
+    "source_text_preview": "[MATH] among nls1s , there is a systematic trend with galaxy inclination , i.e. , more inclined galaxies have larger [MATH] at fixed [MATH] , probably due to the contribution of the rotational broaden"
+  },
+  {
+    "id": 13,
+    "query": "2dF galaxy redshift survey dynamical mass analysis",
+    "ground_truth_chunk_id": "156a55d614d2b5cdb665831f48ee9301",
+    "ground_truth_paper_id": 8237,
+    "source_section": "ABSTRACT",
+    "source_text_preview": "we compute [MATH] , the dynamical mass interior to a radius of [MATH] kpc , for a set of 809 isolated host galaxies in the 100k data release of the 2df galaxy redshift survey . \n the hosts are surroun"
+  },
+  {
+    "id": 14,
+    "query": "magnetic helicity inversion methods in astrophysics",
+    "ground_truth_chunk_id": "c070ccb60d0101098881c22cb3c23c47",
+    "ground_truth_paper_id": 3082,
+    "source_section": "ABSTRACT",
+    "source_text_preview": "the force - free parameter [MATH] , also known as helicity parameter or twist parameter , bears the same sign as the magnetic helicity under some restrictive conditions . \n the single global value of "
+  },
+  {
+    "id": 15,
+    "query": "partitioning bosonic frequency sums in continuum models for slow convergence",
+    "ground_truth_chunk_id": "62ebb2a1f8e2243ab60dc17bfd9034f3",
+    "ground_truth_paper_id": 585,
+    "source_section": "ARTICLE",
+    "source_text_preview": "in particular , the radial wave - vector integral extending up to infinity is partitioned into an inner and an outer region , with the transformation [MATH] exploited in the outer region . \n the boson"
+  },
+  {
+    "id": 16,
+    "query": "Linewidth-size relations of molecular clouds",
+    "ground_truth_chunk_id": "fe56c6749e20d6b4df3163e0a3cfdcdf",
+    "ground_truth_paper_id": 3520,
+    "source_section": "ARTICLE",
+    "source_text_preview": "pointed out the utility of this idealization within the context of the classic two - phase model of the diffuse interstellar medium [ ; ; ] , while published extensive tables analyzing the stability o"
+  },
+  {
+    "id": 17,
+    "query": "quantum field theory in dispersive media weak coupling limit",
+    "ground_truth_chunk_id": "205b4839bbbaab9dbf32cec0a1abd0a8",
+    "ground_truth_paper_id": 3299,
+    "source_section": "ABSTRACT",
+    "source_text_preview": "a dispersive medium becomes entangled with zero - point fluctuations in the vacuum . \n we consider an arbitrary array of material bodies weakly interacting with a quantum field and compute the quantum"
+  },
+  {
+    "id": 18,
+    "query": "scientific papers on star-forming regions with mixed radio and X-ray morphology",
+    "ground_truth_chunk_id": "04bc260833d9ff7a4a8ccde46a4ef149",
+    "ground_truth_paper_id": 7903,
+    "source_section": "ARTICLE",
+    "source_text_preview": "hb 21 ( g89.0 + 4.7 ) is one of those snrs with mixed morphology , e.g. , shell - like in radio and center - filled in the x - ray ( rho & petre 1998 ) , where the center - filled , thermal x - ray em"
+  },
+  {
+    "id": 19,
+    "query": "afterglow emission mechanisms in gamma ray bursts",
+    "ground_truth_chunk_id": "1282a2bb7d4c7efca45244cf1549a114",
+    "ground_truth_paper_id": 1236,
+    "source_section": "ARTICLE",
+    "source_text_preview": "this indicates that chromatic x - ray breaks are due to a mechanism whose emission over - shines an underlying one only in the x - rays , but not in the optical . \n thus , it seems that the diversity "
+  },
+  {
+    "id": 20,
+    "query": "Bayesian inference for spectrum sensing in cognitive radio systems",
+    "ground_truth_chunk_id": "ee36ab7bb5aafaecb45ef8b904e37f91",
+    "ground_truth_paper_id": 9563,
+    "source_section": "ARTICLE",
+    "source_text_preview": "this leads to a classical problem from bayesian inference . \n [ l8 ] through the laplace formula , the estimated probability of spectrum availability at cr - rx is [MATH] where [MATH]}$ ] . \n inferenc"
+  },
+  {
+    "id": 21,
+    "query": "integral inequality for nonlinear ordinary differential equations with applications in mathematical biology",
+    "ground_truth_chunk_id": "a29a063721b86425d6ef8b2069c2c8c2",
+    "ground_truth_paper_id": 9940,
+    "source_section": "ARTICLE",
+    "source_text_preview": "t\\in[0,t_0)\\\\[.5pc ] -u'(t ) & = \\int^t_{t_0 } [ p(s)u^{-\\lambda}(s)+q(s)u^{-m}(s)]\\,\\hbox{\\rm d}s \\\\[.5pc ] & \\geq ( 4c_0)^{\\min\\{\\lambda , m\\}}\\int^t_{t_0 } [ p(s)+q(s)]\\,\\hbox{\\rm d}s,\\ \\ \\ t\\in [ "
+  },
+  {
+    "id": 22,
+    "query": "effect of photon constraints on lepton distributions in particle physics",
+    "ground_truth_chunk_id": "f29c650fef0407ec388a103ba1703d15",
+    "ground_truth_paper_id": 5025,
+    "source_section": "ARTICLE",
+    "source_text_preview": "in contrast , for the lepton distributions the additional photon constraints have a large effect in many of the bins . \n for instance , the photon - initiated contribution to the smallest [MATH] bin i"
+  },
+  {
+    "id": 23,
+    "query": "bi-lipschitz equivalent metrics on the heisenberg group",
+    "ground_truth_chunk_id": "d74903e86bdb5cf403e8ee74e821d27e",
+    "ground_truth_paper_id": 5527,
+    "source_section": "ARTICLE",
+    "source_text_preview": ". one of the requirements is , however , that the metrics be bi - lipschitz equivalent . actually , from the point of view of analysis on metric spaces , spaces which are bi - lipschitz homeomorphic a"
+  },
+  {
+    "id": 24,
+    "query": "spectral radius of interconnected networks perturbation theory eigenvalue lemma",
+    "ground_truth_chunk_id": "1864d35891250eea751b9df6bd71da1c",
+    "ground_truth_paper_id": 9141,
+    "source_section": "ARTICLE",
+    "source_text_preview": "[ alphainfinity ] for large [MATH] , the spectral radius of interconnected networks is [MATH] where [MATH] is the eigenvector belonging to [MATH] and [MATH] the lemma [ alphainfinity ] follows by appl"
+  },
+  {
+    "id": 25,
+    "query": "x-ray emission in ngc 4151 galaxy inner region",
+    "ground_truth_chunk_id": "a2df37c934e72b42106d896a508f837a",
+    "ground_truth_paper_id": 8726,
+    "source_section": "ABSTRACT",
+    "source_text_preview": "we have studied the x - ray emission within the inner [MATH] pc radius of ngc 4151 by constructing high spatial resolution emission line images of blended ovii , oviii , and neix . \n these maps show e"
+  },
+  {
+    "id": 26,
+    "query": "gravitational duals for near-horizon CFTs in AdS space",
+    "ground_truth_chunk_id": "f1be38cac532e655ca8ca12cfb206275",
+    "ground_truth_paper_id": 2917,
+    "source_section": "ARTICLE",
+    "source_text_preview": "there are several motivations for exploring this possibility . \n the first is finding a gravitational dual for the nrcft on a sphere , as described above . \n another is understanding the implementatio"
+  },
+  {
+    "id": 27,
+    "query": "inductive construction of Lie superalgebras examples",
+    "ground_truth_chunk_id": "8b65334447d8cb138760f3e72e0e16e1",
+    "ground_truth_paper_id": 385,
+    "source_section": "ABSTRACT",
+    "source_text_preview": "[MATH]lie algebras are natural generalisations of lie algebras ( [MATH] ) and lie superalgebras ( [MATH] ) . \n we give finite dimensional examples of [MATH]lie algebras obtained by an inductive proces"
+  },
+  {
+    "id": 28,
+    "query": "higgs cross section at LHC constrained by exclusive photon production",
+    "ground_truth_chunk_id": "2d9dd54bf0d7ecdab05829cfe8e1bd22",
+    "ground_truth_paper_id": 2122,
+    "source_section": "ARTICLE",
+    "source_text_preview": "although the uncertainty caused by the [MATH] values is small , the remaining uncertainty due to the different gluon densities is large . \n therefore some other measurements such as the exclusive phot"
+  },
+  {
+    "id": 29,
+    "query": "Haar measure for classical Lie groups and orthosymplectic Lie superalgebra representations",
+    "ground_truth_chunk_id": "51d701305511858ac7e5c2f4f2947c46",
+    "ground_truth_paper_id": 9907,
+    "source_section": "ABSTRACT",
+    "source_text_preview": "we compute haar ensemble averages of ratios of random characteristic polynomials for the classical lie groups [MATH] , [MATH] , and [MATH] . to that end , we start from the clifford - weyl algebra in "
+  },
+  {
+    "id": 30,
+    "query": "spot migration patterns in ii peg light curves",
+    "ground_truth_chunk_id": "69fe039c1aeed98184a3a3b5724aaa8e",
+    "ground_truth_paper_id": 2847,
+    "source_section": "ARTICLE",
+    "source_text_preview": "the ii peg data were acquired from 19731992 , and subdivided into 37 individual light curves . \n they plotted `` migration curves '' for twelve long - lived spots they identified in the data from the "
+  },
+  {
+    "id": 31,
+    "query": "spin polarization in materials with Rashba effect and Yang Mills field",
+    "ground_truth_chunk_id": "43d03fb50cf70fe38e47c534e5304cda",
+    "ground_truth_paper_id": 1997,
+    "source_section": "ABSTRACT",
+    "source_text_preview": "by associating a spin - orbit interaction with a non - abelian gauge potential , we theoretically present a spin polarization in a quite general form using an effective yang - mills field and a usual "
+  },
+  {
+    "id": 32,
+    "query": "fuzzy automata with free monoid and string concatenation",
+    "ground_truth_chunk_id": "3957b260b5f006b70018fa6983146f1a",
+    "ground_truth_paper_id": 4740,
+    "source_section": "ARTICLE",
+    "source_text_preview": "thus , a fuzzy automaton is actually a special case of a fuzzy labeled transition system that includes a set of initial states and a set of final states . given a fuzzy automaton over an alphabet ( a "
+  },
+  {
+    "id": 33,
+    "query": "deconfined phase exponential correlation functions in field theory",
+    "ground_truth_chunk_id": "1a281db0b6337c018bd71334ecd5211f",
+    "ground_truth_paper_id": 4549,
+    "source_section": "ARTICLE",
+    "source_text_preview": "this observation holds for all temperatures . within the deconfined phase \n , the [MATH] correlators can not be described at all , by an ansatz in terms of exponential [MATH] and [MATH] functions . \n "
+  },
+  {
+    "id": 34,
+    "query": "complexity of point set processing in geometric algorithms",
+    "ground_truth_chunk_id": "8d90edae7f2e7108f1dd09f4ef69bef8",
+    "ground_truth_paper_id": 1282,
+    "source_section": "ARTICLE",
+    "source_text_preview": "the leaves , with point sets of size [MATH] , are processed by inspecting their points individually . by lemma [ l : \n cr ] , the number of cells crossed by any of the polynomials defining [MATH] at a"
+  },
+  {
+    "id": 35,
+    "query": "metal poor gas replenishment in large magellanic cloud",
+    "ground_truth_chunk_id": "ffad3894f87e38f3a7674c170bf5e84a",
+    "ground_truth_paper_id": 445,
+    "source_section": "ABSTRACT",
+    "source_text_preview": "we first show that a large amount of metal - poor gas is stripped from the small magellanic cloud ( smc ) and fallen into the large magellanic cloud ( lmc ) during the tidal interaction between the sm"
+  },
+  {
+    "id": 36,
+    "query": "relativistic jet formation in M87 black holes",
+    "ground_truth_chunk_id": "9024d772cfd1dadf1a18d91dbbd4c376",
+    "ground_truth_paper_id": 361,
+    "source_section": "ABSTRACT",
+    "source_text_preview": "the accretion of matter onto a massive black hole is believed to feed the relativistic plasma jets found in many active galactic nuclei ( agn ) . \n although some agn accelerate particles to energies e"
+  },
+  {
+    "id": 37,
+    "query": "antiferromagnet relaxation rate temperature dependence disorder",
+    "ground_truth_chunk_id": "303b19f345b55c8b3e015466f654fdab",
+    "ground_truth_paper_id": 3414,
+    "source_section": "ABSTRACT",
+    "source_text_preview": "we demonstrate that local modulations of magnetic couplings have a profound effect on the temperature dependence of the relaxation rate of optical magnons in a wide class of antiferromagnets in which "
+  },
+  {
+    "id": 38,
+    "query": "quantum mechanics interpretation collapse of the wave function in probability theory",
+    "ground_truth_chunk_id": "1b6fe0eff48d4b9c7764c705f9ab7b60",
+    "ground_truth_paper_id": 6055,
+    "source_section": "ABSTRACT",
+    "source_text_preview": "we shall argue in this paper that a central piece of modern physics does not really belong to physics at all but to elementary probability theory . given a joint probability distribution j on a set of"
+  },
+  {
+    "id": 39,
+    "query": "halo model predictions versus different color measurements in SDSS data",
+    "ground_truth_chunk_id": "186a8f0c42511e4a02aa11e36815a15e",
+    "ground_truth_paper_id": 3688,
+    "source_section": "ARTICLE",
+    "source_text_preview": "the solid curve shows the halo model s prediction , which is in agreement with the measurements of the color mark correlations in the sdss , using petrosian colors . \n had we instead used [MATH] as th"
+  },
+  {
+    "id": 40,
+    "query": "Extreme value laws in dynamical systems with observational noise",
+    "ground_truth_chunk_id": "0c9b28a4275961740a7caa5a71703ca4",
+    "ground_truth_paper_id": 9562,
+    "source_section": "ABSTRACT",
+    "source_text_preview": "in this paper we prove the existence of extreme value laws for dynamical systems perturbed by instrument - like - error , also called observational noise . \n an orbit perturbed with observational nois"
+  },
+  {
+    "id": 41,
+    "query": "black hole simulation boundary conditions",
+    "ground_truth_chunk_id": "f79fd8086cfa24b542e8d7bc8570db4c",
+    "ground_truth_paper_id": 4450,
+    "source_section": "ARTICLE",
+    "source_text_preview": "we set the black hole mass as [MATH] which corresponds to [MATH] km ( we define [MATH] ) . \n the two - dimensional axisymmetric computational domain is [MATH] , where [MATH] , [MATH] is the dimensionl"
+  },
+  {
+    "id": 42,
+    "query": "Local stability of difference equation equilibria",
+    "ground_truth_chunk_id": "ce663e677fde9ea151c4887d72275b07",
+    "ground_truth_paper_id": 1351,
+    "source_section": "ARTICLE",
+    "source_text_preview": "+ without any loss of generality , we shall now onward focus only on the three difference equations ( 6 ) , ( 7 ) and ( 8) . \n in this section we establish the local stability character of the equilib"
+  },
+  {
+    "id": 43,
+    "query": "belle detector kekb asymmetric s decay analysis",
+    "ground_truth_chunk_id": "17019d7017f8e82a0a51a18e6c5d640e",
+    "ground_truth_paper_id": 7430,
+    "source_section": "ABSTRACT",
+    "source_text_preview": "we report results on the decay [MATH] and its charge conjugate using a data sample of 85.4 million [MATH] pairs recorded at the [MATH] resonance with the belle detector at the kekb asymmetric [MATH] s"
+  },
+  {
+    "id": 44,
+    "query": "detection of warm hot intragroup medium in galaxy clusters",
+    "ground_truth_chunk_id": "a7954be24975ef3f08b2705c6588c0d1",
+    "ground_truth_paper_id": 4497,
+    "source_section": "ARTICLE",
+    "source_text_preview": "this result warrants further simulation to understand how the balance of physical processes between the cloud and the circumgroup medium allows for cloud survival . \n unfortunately , the warm - hot in"
+  },
+  {
+    "id": 45,
+    "query": "satellite galaxy motion around isolated galaxies in the Sloan Digital Sky Survey",
+    "ground_truth_chunk_id": "91b406b00e9314f2bf45e275c8c0c39e",
+    "ground_truth_paper_id": 3176,
+    "source_section": "ABSTRACT",
+    "source_text_preview": "the motion of satellite galaxies around normal galaxies at distances 50 - 500 kpc provides a sensitive test for the theories . \n we study the surface density and the velocities of satellites around is"
+  },
+  {
+    "id": 46,
+    "query": "Distributed power allocation in cloud radio access networks with coexisting heterogeneous networks",
+    "ground_truth_chunk_id": "41500147650f8a5225adf1bb1c09a7bd",
+    "ground_truth_paper_id": 7986,
+    "source_section": "ABSTRACT",
+    "source_text_preview": "in this paper , the problem of distributed power allocation is considered for the downlink of a cloud radio access network ( cran ) that is coexisting with a heterogeneous network . in this multi - ti"
+  },
+  {
+    "id": 47,
+    "query": "lozin's transformation effect on graph regularity",
+    "ground_truth_chunk_id": "b0ac1d3db0f9a0ddf4459477fe764635",
+    "ground_truth_paper_id": 1479,
+    "source_section": "ABSTRACT",
+    "source_text_preview": "we prove that when a lozin s transformation is applied to a graph , the ( castelnuovo - mumford ) regularity of the graph increases exactly by one , as it happens to its induced matching number . as a"
+  },
+  {
+    "id": 48,
+    "query": "quantum potential in ground state of scattering process",
+    "ground_truth_chunk_id": "45817db9f19f0987a269cd244f78c02d",
+    "ground_truth_paper_id": 5567,
+    "source_section": "ARTICLE",
+    "source_text_preview": "the quantum potential associated with this process is given by : [MATH] such potential admits a ground state with null eigenvalue and a continuum set of eigenvalues [MATH] attached to the null eigenva"
+  },
+  {
+    "id": 49,
+    "query": "charge disproportionation in triangular lattice materials",
+    "ground_truth_chunk_id": "a20fb1533e1f095a8237a94ea5f0c311",
+    "ground_truth_paper_id": 3691,
+    "source_section": "ARTICLE",
+    "source_text_preview": "[ lattices ] . \n the intradimer charge disproportionation in particular argues against the sg state from being a simple vbs , which would require equal charge densities on all the molecules . \n there "
+  }
+]
