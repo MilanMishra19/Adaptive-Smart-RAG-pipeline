@@ -1,3 +1,11 @@
+---
+title: Adaptive RAG Backend
+emoji: 🔍
+colorFrom: purple
+colorTo: blue
+sdk: docker
+pinned: false
+---
 # Adaptive Hybrid RAG Pipeline
 
 A retrieval-augmented generation system over 443k chunks from 10,000 arXiv papers. Combines BM25, dense vector search, and a cross-encoder reranker with LLM-based query routing, query rewriting, and retrieval grading.
