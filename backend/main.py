@@ -1,3 +1,4 @@
+print("[INFO] main.py importing...")
 from fastapi import FastAPI
 from rag_pipeline.app import Pipeline
 from fastapi.middleware.cors import CORSMiddleware
