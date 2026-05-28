@@ -56,8 +56,8 @@ const App = () => {
       <div className="chat-window" ref={scrollRef}>
         {messages.length === 0 && (
           <div style={{ textAlign: 'center', marginTop: '20vh', color: 'var(--muted-text)' }}>
-            <h2 style={{ color: '#fff', marginBottom: '8px' }}>Intelligence Reimagined</h2>
-            <p>Select a mode and start your query.</p>
+            <h2 style={{ color: '#fff', marginBottom: '8px' }}>Adaptive Hybrid RAG</h2>
+            <p>Ask across 10,000 ArXiv Papers related to mathematics,space,optimizations etc.</p>
           </div>
         )}
         
