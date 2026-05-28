@@ -7,6 +7,7 @@ from backend.routes.query import router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    print("[INFO] Lifespan started")
     print("RAG pipeline loading")
     app.state.pipe = Pipeline()
     print("RAG loaded..")
