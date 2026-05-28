@@ -16,4 +16,4 @@ ENV EMBEDDINGS_PATH=/app/data/chunk_embeddings.npy
 
 EXPOSE 7860
 
-CMD ["uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "7860"]
+CMD ["sh", "-c", "echo 'Starting...' && ls /app && echo 'Python path:' && python -c 'import sys; print(sys.path)' && echo 'Testing import...' && python -c 'from backend.main import app; print(\"Import OK\")' && uvicorn backend.main:app --host 0.0.0.0 --port 7860"]
