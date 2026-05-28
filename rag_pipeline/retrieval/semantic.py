@@ -4,13 +4,13 @@ import numpy as np
 from qdrant_client import QdrantClient
 from qdrant_client.models import VectorParams, Distance, PointStruct
 from sentence_transformers import SentenceTransformer
-from rag_pipeline.config import BI_ENCODER_MODEL,TOP_K_RETRIEVE,COLLECTION_NAME,VECTOR_SIZE    
+from rag_pipeline.config import BI_ENCODER_MODEL,TOP_K_RETRIEVE,COLLECTION_NAME,VECTOR_SIZE,QDRANT_API_KEY,QDRANT_URL    
 
 _bi_encoder = None
 _qdrant = None
 _all_chunks:list[dict]=[]
 def load_qdrant() -> QdrantClient:
-    client = QdrantClient(host="localhost",port=6333)
+    client = QdrantClient(url=QDRANT_URL, api_key=QDRANT_API_KEY)
     print("[INFO] Qdrant loaded")
     return client
 

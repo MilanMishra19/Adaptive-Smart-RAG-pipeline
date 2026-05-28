@@ -28,13 +28,15 @@ from rag_pipeline.config import (
     TOP_N_RERANK,
     CONFIDENCE_THRESHOLD,
     HF_REPO_ID,
-    HF_TOKEN
+    HF_TOKEN,
+    QDRANT_URL,
+    QDRANT_API_KEY
 )
 
 
 class Pipeline:
     """Loads every index and model once at construction; exposes .query()."""
-    def ensure_artifacts(self):
+    def _ensure_artifacts(self):
         from huggingface_hub import snapshot_download
         import os
         needs_download = any([
@@ -66,7 +68,7 @@ class Pipeline:
 
         # Indexes
         self.retriever = bm25s.BM25.load(BM25_INDEX_PATH, load_corpus=True)
-        self.qdrant    = QdrantClient(host="localhost",port=6333)
+        self.qdrant    = QdrantClient(url=QDRANT_URL, api_key=QDRANT_API_KEY)
 
         # Corpus + embeddings
         with open(CHUNKS_PATH) as f:
